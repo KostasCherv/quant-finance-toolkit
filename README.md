@@ -35,6 +35,67 @@ A comprehensive Python toolkit for quantitative finance, featuring pricing model
 - **Crypto vs Stocks Comparison**: Compare performance metrics between crypto and traditional assets
 - **Visualization**: Price charts, correlation heatmaps, volatility comparisons
 
+### Interactive Visualizations 🎨
+- **Plotly Integration**: Professional interactive charts with hover tooltips, zoom, and export
+- **Efficient Frontier**: Interactive risk-return analysis with optimal portfolio highlighting
+- **Time Series**: Interactive cryptocurrency price comparisons with date range selectors
+- **Correlation Heatmaps**: Interactive correlation matrices with detailed hover information
+- **Monte Carlo Simulations**: Interactive GBM simulations with confidence bands
+- **Volatility Comparisons**: Interactive bar charts with color-coded metrics
+
+## Showcase
+
+### Interactive Visualizations
+
+The toolkit includes professional-grade interactive visualizations built with Plotly, featuring:
+
+- **Hover Tooltips**: Detailed information on hover
+- **Zoom & Pan**: Interactive exploration of data
+- **Export Options**: Save as HTML, PNG, or SVG
+- **Professional Styling**: Clean, modern design
+- **Responsive Layouts**: Adapts to different screen sizes
+
+#### Key Visualizations:
+
+1. **Interactive Efficient Frontier**
+   - Risk-return scatter plot with Sharpe ratio color-coding
+   - Optimal portfolio highlighted with star marker
+   - Hover to see exact return, volatility, and Sharpe ratio values
+
+2. **Interactive Cryptocurrency Price Comparison**
+   - Normalized price history with date range selector
+   - Multiple cryptocurrencies on one chart
+   - Range slider for easy time period selection
+
+3. **Interactive Correlation Heatmap**
+   - Color-coded correlation matrix
+   - Hover to see correlation values between asset pairs
+   - Professional red-blue color scheme
+
+4. **Interactive Volatility Comparison**
+   - Bar chart with color gradients
+   - Hover tooltips with exact values
+   - Easy comparison across multiple assets
+
+5. **Interactive GBM Simulation**
+   - Multiple simulation paths with confidence bands
+   - Mean path and 95% confidence intervals
+   - Interactive exploration of price forecasts
+
+**Try the Visualization Gallery:**
+```bash
+uv run python examples/visualization_gallery.py
+```
+
+### Example Outputs
+
+The toolkit generates publication-quality visualizations suitable for:
+- Portfolio analysis reports
+- Risk assessment presentations
+- Academic research papers
+- Investment strategy documentation
+- Educational materials
+
 ## Installation
 
 This project uses [UV](https://github.com/astral-sh/uv) for fast and reliable dependency management.
@@ -174,6 +235,40 @@ var_result = crypto_var_analysis(
 )
 ```
 
+### Interactive Visualizations
+
+```python
+from quant_finance_toolkit import (
+    plot_interactive_efficient_frontier,
+    plot_interactive_crypto_prices,
+    plot_interactive_correlation_heatmap,
+    plot_interactive_volatility_comparison,
+    plot_interactive_gbm_simulation,
+)
+
+# Interactive efficient frontier
+fig = plot_interactive_efficient_frontier(
+    portfolio_returns, portfolio_volatility,
+    optimal_stats=(optimal_return, optimal_vol),
+    optimal_weights=optimal_weights,
+    asset_names=["AAPL", "MSFT", "GOOGL"]
+)
+
+# Interactive crypto price comparison
+fig = plot_interactive_crypto_prices(
+    ["BTC-USD", "ETH-USD"], "2020-01-01", "2024-01-01", normalize=True
+)
+
+# Interactive correlation heatmap
+fig = plot_interactive_correlation_heatmap(correlation_matrix)
+
+# Interactive volatility comparison
+fig = plot_interactive_volatility_comparison(volatility_df)
+
+# Interactive GBM simulation
+fig = plot_interactive_gbm_simulation(time, price_paths)
+```
+
 ## Project Structure
 
 ```
@@ -214,6 +309,15 @@ See the `examples/crypto/` directory for cryptocurrency analysis examples:
 - `crypto_portfolio_example.py` - Portfolio optimization with efficient frontier and correlation heatmap
 - `crypto_risk_example.py` - VaR analysis for individual cryptos and portfolios
 
+### Visualization Gallery
+
+See `examples/visualization_gallery.py` for a comprehensive showcase of all interactive visualizations:
+- Interactive efficient frontier with optimal portfolio
+- Interactive cryptocurrency price comparisons
+- Interactive correlation heatmaps
+- Interactive volatility comparisons
+- Interactive GBM simulations with confidence bands
+
 Run examples:
 ```bash
 # Traditional finance
@@ -223,13 +327,17 @@ uv run python examples/traditional_finance/bond_pricing_example.py
 uv run python examples/crypto/crypto_price_analysis_example.py
 uv run python examples/crypto/crypto_portfolio_example.py
 uv run python examples/crypto/crypto_risk_example.py
+
+# Interactive visualization gallery
+uv run python examples/visualization_gallery.py
 ```
 
 ## Dependencies
 
 - **numpy**: Numerical computations
 - **pandas**: Data manipulation and analysis
-- **matplotlib**: Visualization
+- **matplotlib**: Static visualization
+- **plotly**: Interactive visualization (new!)
 - **scipy**: Scientific computing and optimization
 - **yfinance**: Market data fetching
 

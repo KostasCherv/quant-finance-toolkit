@@ -72,7 +72,16 @@ except ImportError:
     CRYPTO_AVAILABLE = False
 
 # Utils module
-from .utils import plot_gbm, plot_process, plot_wiener_process
+from .utils import (
+    plot_gbm,
+    plot_interactive_correlation_heatmap,
+    plot_interactive_crypto_prices,
+    plot_interactive_efficient_frontier,
+    plot_interactive_gbm_simulation,
+    plot_interactive_volatility_comparison,
+    plot_process,
+    plot_wiener_process,
+)
 
 __all__ = [
     # Version
@@ -112,6 +121,12 @@ __all__ = [
     "plot_wiener_process",
     "plot_gbm",
     "plot_process",
+    # Interactive Visualizations
+    "plot_interactive_efficient_frontier",
+    "plot_interactive_crypto_prices",
+    "plot_interactive_correlation_heatmap",
+    "plot_interactive_volatility_comparison",
+    "plot_interactive_gbm_simulation",
 ]
 
 # Conditionally add crypto exports if available
