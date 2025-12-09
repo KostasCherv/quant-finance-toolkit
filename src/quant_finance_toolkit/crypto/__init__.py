@@ -1,11 +1,41 @@
 """Crypto-specific financial models and utilities.
 
-This module is a placeholder for future cryptocurrency-specific implementations.
-Planned features include:
-- Crypto price modeling using stochastic processes
-- Crypto portfolio optimization
-- Crypto derivatives pricing
-- Cross-asset correlation analysis (traditional vs crypto)
+This module provides cryptocurrency-specific implementations of quantitative finance models:
+- Price modeling and simulation using stochastic processes
+- Volatility analysis and comparison
+- Portfolio optimization for crypto assets
+- Risk management (VaR) for crypto portfolios
+- Visualization tools for crypto data analysis
 """
 
-__all__ = []
+from .models import (
+    compare_crypto_stocks,
+    crypto_price_simulation,
+    crypto_volatility_analysis,
+)
+from .portfolio import crypto_correlation_matrix, optimize_crypto_portfolio
+from .risk import crypto_portfolio_var, crypto_var_analysis
+from .visualization import (
+    plot_crypto_correlation_heatmap,
+    plot_crypto_prices,
+    plot_crypto_returns,
+    plot_crypto_volatility_comparison,
+)
+
+__all__ = [
+    # Models
+    "crypto_price_simulation",
+    "crypto_volatility_analysis",
+    "compare_crypto_stocks",
+    # Portfolio
+    "optimize_crypto_portfolio",
+    "crypto_correlation_matrix",
+    # Risk
+    "crypto_var_analysis",
+    "crypto_portfolio_var",
+    # Visualization
+    "plot_crypto_prices",
+    "plot_crypto_returns",
+    "plot_crypto_correlation_heatmap",
+    "plot_crypto_volatility_comparison",
+]
