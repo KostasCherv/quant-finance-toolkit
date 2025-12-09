@@ -6,6 +6,7 @@ A comprehensive toolkit for quantitative finance including:
 - Risk management (VaR)
 - Stochastic models (GBM, Vasicek, Ornstein-Uhlenbeck)
 - Monte Carlo simulations
+- Cryptocurrency analysis and modeling
 """
 
 __version__ = "0.1.0"
@@ -48,7 +49,27 @@ from .portfolio import (
 from .risk import ValueAtRiskMonteCarlo, value_at_risk_n
 
 # Data module
-from .data import download_stock_data
+from .data import download_crypto_data, download_stock_data
+
+# Crypto module (optional import to avoid circular dependencies)
+try:
+    from .crypto import (
+        compare_crypto_stocks,
+        crypto_correlation_matrix,
+        crypto_portfolio_var,
+        crypto_price_simulation,
+        crypto_var_analysis,
+        crypto_volatility_analysis,
+        optimize_crypto_portfolio,
+        plot_crypto_correlation_heatmap,
+        plot_crypto_prices,
+        plot_crypto_returns,
+        plot_crypto_volatility_comparison,
+    )
+
+    CRYPTO_AVAILABLE = True
+except ImportError:
+    CRYPTO_AVAILABLE = False
 
 # Utils module
 from .utils import plot_gbm, plot_process, plot_wiener_process
@@ -86,8 +107,31 @@ __all__ = [
     "ValueAtRiskMonteCarlo",
     # Data
     "download_stock_data",
+    "download_crypto_data",
     # Utils
     "plot_wiener_process",
     "plot_gbm",
     "plot_process",
 ]
+
+# Conditionally add crypto exports if available
+if CRYPTO_AVAILABLE:
+    __all__.extend(
+        [
+            # Crypto Models
+            "crypto_price_simulation",
+            "crypto_volatility_analysis",
+            "compare_crypto_stocks",
+            # Crypto Portfolio
+            "optimize_crypto_portfolio",
+            "crypto_correlation_matrix",
+            # Crypto Risk
+            "crypto_var_analysis",
+            "crypto_portfolio_var",
+            # Crypto Visualization
+            "plot_crypto_prices",
+            "plot_crypto_returns",
+            "plot_crypto_correlation_heatmap",
+            "plot_crypto_volatility_comparison",
+        ]
+    )

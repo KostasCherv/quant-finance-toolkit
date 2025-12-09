@@ -24,8 +24,16 @@ A comprehensive Python toolkit for quantitative finance, featuring pricing model
 - **Monte Carlo Simulations**: Flexible simulation framework
 
 ### Data Utilities
-- **Market Data**: Yahoo Finance integration for stock price data
+- **Market Data**: Yahoo Finance integration for stock and crypto price data
 - **Data Processing**: Returns calculation and statistical analysis
+
+### Cryptocurrency Analysis
+- **Crypto Price Modeling**: GBM simulations for cryptocurrency price forecasting
+- **Volatility Analysis**: Compare volatility across multiple cryptocurrencies
+- **Crypto Portfolio Optimization**: Markowitz optimization for crypto portfolios
+- **Crypto Risk Management**: Value at Risk (VaR) for crypto positions and portfolios
+- **Crypto vs Stocks Comparison**: Compare performance metrics between crypto and traditional assets
+- **Visualization**: Price charts, correlation heatmaps, volatility comparisons
 
 ## Installation
 
@@ -127,6 +135,45 @@ var_mc = mc_var.simulation()
 print(f"Monte Carlo VaR: ${var_mc:.2f}")
 ```
 
+### Cryptocurrency Analysis
+
+```python
+from quant_finance_toolkit import (
+    download_crypto_data,
+    crypto_price_simulation,
+    crypto_volatility_analysis,
+    optimize_crypto_portfolio,
+    crypto_var_analysis,
+    plot_crypto_prices,
+)
+
+# Download crypto data
+cryptos = ["BTC-USD", "ETH-USD", "BNB-USD", "SOL-USD", "ADA-USD"]
+data = download_crypto_data(cryptos, "2020-01-01", "2024-01-01")
+
+# Plot normalized prices
+plot_crypto_prices(cryptos, "2020-01-01", "2024-01-01", normalize=True)
+
+# Price simulation
+sim_results, stats = crypto_price_simulation(
+    "BTC-USD", "2020-01-01", "2024-01-01", T=1.0, num_simulations=1000
+)
+
+# Volatility analysis
+volatility_df = crypto_volatility_analysis(cryptos, "2020-01-01", "2024-01-01")
+
+# Portfolio optimization
+portfolio_result = optimize_crypto_portfolio(
+    cryptos, "2020-01-01", "2024-01-01", num_portfolios=10000
+)
+
+# VaR analysis
+var_result = crypto_var_analysis(
+    "BTC-USD", position=100000, start_date="2020-01-01", 
+    end_date="2024-01-01", confidence_level=0.99
+)
+```
+
 ## Project Structure
 
 ```
@@ -139,23 +186,43 @@ quant-finance-toolkit/
 │       ├── risk/             # Risk management
 │       ├── data/              # Data fetching utilities
 │       ├── utils/             # Visualization utilities
-│       └── crypto/            # Crypto-specific models (future)
+│       └── crypto/            # Crypto-specific models and analysis
+│           ├── models.py      # Price simulation, volatility analysis
+│           ├── portfolio.py   # Portfolio optimization
+│           ├── risk.py        # VaR calculations
+│           └── visualization.py  # Plotting utilities
 ├── examples/
-│   └── traditional_finance/   # Usage examples
+│   ├── traditional_finance/   # Traditional finance examples
+│   └── crypto/                # Cryptocurrency examples
 ├── tests/                     # Test suite
 └── pyproject.toml            # Project configuration
 ```
 
 ## Examples
 
+### Traditional Finance
+
 See the `examples/traditional_finance/` directory for complete working examples:
 - `bond_pricing_example.py` - Bond pricing demonstrations
 - `option_pricing_example.py` - Option pricing comparisons
 - `portfolio_optimization_example.py` - Portfolio optimization workflow
 
+### Cryptocurrency
+
+See the `examples/crypto/` directory for cryptocurrency analysis examples:
+- `crypto_price_analysis_example.py` - Price modeling, volatility analysis, crypto vs stocks comparison
+- `crypto_portfolio_example.py` - Portfolio optimization with efficient frontier and correlation heatmap
+- `crypto_risk_example.py` - VaR analysis for individual cryptos and portfolios
+
 Run examples:
 ```bash
+# Traditional finance
 uv run python examples/traditional_finance/bond_pricing_example.py
+
+# Cryptocurrency
+uv run python examples/crypto/crypto_price_analysis_example.py
+uv run python examples/crypto/crypto_portfolio_example.py
+uv run python examples/crypto/crypto_risk_example.py
 ```
 
 ## Dependencies
@@ -184,13 +251,15 @@ The project follows Python best practices:
 
 ## Future Roadmap
 
-- [ ] Cryptocurrency-specific models and examples
+- [x] Cryptocurrency-specific models and examples
 - [ ] Additional stochastic models (Heston, Hull-White)
 - [ ] Backtesting framework
 - [ ] Performance benchmarking tools
 - [ ] Interactive web dashboard
 - [ ] Comprehensive test suite
 - [ ] Additional risk metrics (CVaR, Expected Shortfall)
+- [ ] Crypto derivatives pricing
+- [ ] Real-time crypto data streaming
 
 ## Contributing
 
