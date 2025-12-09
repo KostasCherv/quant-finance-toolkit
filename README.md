@@ -289,6 +289,10 @@ quant-finance-toolkit/
 ├── examples/
 │   ├── traditional_finance/   # Traditional finance examples
 │   └── crypto/                # Cryptocurrency examples
+├── streamlit_app/             # Streamlit web application
+│   ├── app.py                 # Main app entry point
+│   ├── pages/                 # Multi-page app pages
+│   └── utils/                 # Helper utilities
 ├── tests/                     # Test suite
 └── pyproject.toml            # Project configuration
 ```
@@ -332,12 +336,73 @@ uv run python examples/crypto/crypto_risk_example.py
 uv run python examples/visualization_gallery.py
 ```
 
+## Streamlit Web Application
+
+The toolkit includes a professional interactive web application built with Streamlit, providing an intuitive interface for all core features.
+
+### Features
+
+- **Portfolio Optimizer**: Interactive portfolio optimization with efficient frontier visualization
+- **Cryptocurrency Analysis**: Multi-tab interface for price comparison, volatility analysis, correlation, and portfolio optimization
+- **Risk Calculator**: Value at Risk (VaR) calculations for single assets, stock portfolios, and crypto portfolios
+
+### Running the Streamlit App
+
+1. **Install dependencies** (if not already installed):
+   ```bash
+   uv sync
+   ```
+
+2. **Launch the app**:
+   ```bash
+   streamlit run streamlit_app/app.py
+   ```
+
+   The app will open in your default web browser at `http://localhost:8501`
+
+### App Structure
+
+```
+streamlit_app/
+├── app.py                    # Main entry point with navigation
+├── pages/
+│   ├── 1_Portfolio_Optimizer.py
+│   ├── 2_Crypto_Analysis.py
+│   └── 3_Risk_Calculator.py
+└── utils/
+    └── streamlit_helpers.py   # Helper functions for caching and formatting
+```
+
+### Key Features
+
+- **Interactive Visualizations**: All plots use Plotly for zoom, pan, and hover tooltips
+- **Data Caching**: Automatic caching of downloaded data for improved performance
+- **Real-time Calculations**: Instant updates when parameters change
+- **Download Options**: Export results as CSV or JSON
+- **Professional UI**: Clean, responsive design with clear navigation
+
+### Usage Tips
+
+- **Portfolio Optimizer**: Select 3-5 stocks and adjust the date range to see how the efficient frontier changes
+- **Crypto Analysis**: Use the tabs to explore different aspects of cryptocurrency data
+- **Risk Calculator**: Compare VaR across different confidence levels and time horizons
+
+### Deployment
+
+The Streamlit app can be deployed to:
+- **Streamlit Cloud**: Free hosting for Streamlit apps
+- **Local Server**: Run on your own infrastructure
+- **Docker**: Containerize for easy deployment
+
+For Streamlit Cloud deployment, see the [Streamlit Cloud documentation](https://docs.streamlit.io/streamlit-community-cloud).
+
 ## Dependencies
 
 - **numpy**: Numerical computations
 - **pandas**: Data manipulation and analysis
 - **matplotlib**: Static visualization
-- **plotly**: Interactive visualization (new!)
+- **plotly**: Interactive visualization
+- **streamlit**: Interactive web application framework
 - **scipy**: Scientific computing and optimization
 - **yfinance**: Market data fetching
 
@@ -360,10 +425,10 @@ The project follows Python best practices:
 ## Future Roadmap
 
 - [x] Cryptocurrency-specific models and examples
+- [x] Interactive web dashboard (Streamlit)
 - [ ] Additional stochastic models (Heston, Hull-White)
 - [ ] Backtesting framework
 - [ ] Performance benchmarking tools
-- [ ] Interactive web dashboard
 - [ ] Comprehensive test suite
 - [ ] Additional risk metrics (CVaR, Expected Shortfall)
 - [ ] Crypto derivatives pricing
