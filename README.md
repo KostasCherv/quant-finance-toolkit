@@ -340,6 +340,14 @@ uv run python examples/visualization_gallery.py
 
 The toolkit includes a professional interactive web application built with Streamlit, providing an intuitive interface for all core features.
 
+![Cryptocurrency Analysis Page](docs/images/streamlit-crypto-analysis.png)
+
+*The Crypto Analysis page showing volatility metrics, multi-tab interface, and interactive data visualization.*
+
+![Cryptocurrency Portfolio Optimization](docs/images/streamlit-crypto-portfolio-optimization.png)
+
+*Interactive efficient frontier visualization for cryptocurrency portfolio optimization with optimal portfolio highlighting.*
+
 ### Features
 
 - **Portfolio Optimizer**: Interactive portfolio optimization with efficient frontier visualization
@@ -380,6 +388,8 @@ streamlit_app/
 - **Real-time Calculations**: Instant updates when parameters change
 - **Download Options**: Export results as CSV or JSON
 - **Professional UI**: Clean, responsive design with clear navigation
+- **Multi-tab Interface**: Organized analysis tools with tabbed navigation (Price Comparison, Volatility Analysis, Correlation, Portfolio Optimization)
+- **Comprehensive Metrics**: Detailed volatility metrics (daily, weekly, monthly, annualized) for risk assessment
 
 ### Usage Tips
 
